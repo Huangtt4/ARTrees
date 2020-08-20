@@ -1,0 +1,20 @@
+﻿using UnityEngine;
+using UnityEngine.Android;
+
+public class AndroidLocationRequest : MonoBehaviour
+{
+    public void AskLocationPermission()
+    {
+        if (Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+        {
+            Permission.RequestUserPermission(Permission.FineLocation);
+            // The user authorized use of the microphone.
+        }
+        else
+        {
+            // We do not have permission to use the microphone.
+            // Ask for permission or proceed without the functionality enabled.
+            Permission.RequestUserPermission(Permission.FineLocation);
+        }
+    }
+}

@@ -1,0 +1,6 @@
+AvoidedRunoff_Dol = Storm Water Migration
+Poll_Removal_dolyer = Population Removal
+EnergySavings_dolyr = Energy
+??? Carbon Runoff = Air Quality Value
+StructuralValue_dol = Aesthetic Historical Value
+TotalAnnualBenefits_dolyr = Annual Economic Benefit
