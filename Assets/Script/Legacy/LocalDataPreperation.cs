@@ -77,6 +77,7 @@ public class LocalDataPreperation : MonoBehaviour
                 string key = (tree.Genus != null && tree.Specificep != null) ? tree.Genus.ToLower() + " " + tree.Specificep.ToLower() : "no id";
                 tree.SpecialStory = SpecialStory.ContainsKey(tree.Treeid.ToString()) ? (string)SpecialStory[tree.Treeid.ToString()]["Story"] : "Please contact us to provide more cultural story about this tree";
                 tree.GeneralStory = GeneralStory.ContainsKey(key) ? (string)GeneralStory[key]["General Information"] + "\nTree id: " + tree.Treeid : "Please contact us to provide more cultural story about this tree" + "\nTree id: " + tree.Treeid;
+                tree.GeneralStory = SpecialStory.ContainsKey(tree.Treeid.ToString()) ? (string)SpecialStory[tree.Treeid.ToString()]["Story"] : tree.GeneralStory;
                 tree.EconomicBenifit = TreeBenifit.ContainsKey(tree.Treeid.ToString()) ? TreeBenifit[tree.Treeid.ToString()]["TotalAnnualBenefits_dolyr"].ToString() : "0";
                 tree.HistoricalVal = TreeBenifit.ContainsKey(tree.Treeid.ToString()) ? TreeBenifit[tree.Treeid.ToString()]["StructuralValue_dol"].ToString() : "0";
                 tree.CStorage = TreeBenifit.ContainsKey(tree.Treeid.ToString()) ? (string)TreeBenifit[tree.Treeid.ToString()]["C_Storage_Dol"].ToString() : "0";
@@ -102,6 +103,14 @@ public class LocalDataPreperation : MonoBehaviour
                     tree.TreeType = 0;
                     myTrees.Add(tree);
 
+                }
+                if(tree.Treeid == "9999999")
+                {
+                    tree.GeneralStory = (string)SpecialStory[tree.Treeid.ToString()]["Story"];
+                }
+                if (tree.Genus == "null")
+                {
+                    tree.GeneralStory = "Missing Data.Can you help identify this tree?”. Then a linkthat reads “Submit your data”. The link goes to thisform: https://arcg.is/1iXGLi0";
                 }
             }
         }
